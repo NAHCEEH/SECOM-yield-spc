@@ -57,7 +57,6 @@ Isolation Forest는 다른 sample들과 동떨어진 sample을 더 쉽게 고립
 
 SECOM 데이터의 fail 비율은 다음과 같습니다.
 
-```text
 104 / 1567 = 6.64%
 
 
@@ -100,7 +99,7 @@ Alert Fail Ratio
 
 fail_alerts / total_alerts
 
-Anomaly Score 기반 Threshold 비교
+### Anomaly Score 기반 Threshold 비교
 Isolation Forest는 각 sample에 anomaly score를 부여합니다.
 이번 분석에서는 anomaly score가 낮을수록 더 이상한 sample로 해석했습니다.
 따라서 anomaly score 하위 5%, 10%, 15%를 각각 alert로 설정하여 성능을 비교했습니다
@@ -126,13 +125,13 @@ Alert ratio를 높이면 더 많은 fail sample을 잡을 수 있었지만, 동�
 
 비슷한 오탐율 조건에서 SPC baseline이 Isolation Forest보다 fail sample을 더 많이 탐지했고, alert sample 중 fail 비율도 더 높았습니다.
 
-해석
+## 해석
 기본 설정의 Isolation Forest는 전체 데이터 평균보다 fail 비율이 높은 anomaly sample을 선별했습니다.
 전체 데이터의 fail 비율은 6.64%였고, Isolation Forest 5% threshold 기준 alert fail ratio는 13.92%였습니다.
 즉, 무작위 sample보다 anomaly sample에서 fail 가능성이 더 높게 나타났습니다.
 하지만 SPC baseline과 비교하면 현재 설정에서는 SPC가 더 좋은 성능을 보였습니다.
 
-결론
+## 결론
 기본 Isolation Forest 모델은 fail 가능성이 상대적으로 높은 sample을 선별하는 데 어느 정도 의미가 있었습니다.
 그러나 현재 설정에서는 SPC baseline보다 fail 탐지 성능이 낮았습니다.
 따라서 Isolation Forest 기본 모델만으로는 충분하지 않으며, 이후에는 다음 방향을 검토할 수 있습니다.
